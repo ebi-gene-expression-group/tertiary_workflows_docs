@@ -13,23 +13,13 @@ Tertiary workflows in single-cell RNA-seq analysis are, in the definition of the
 
 This project aims to make the components of such workflows more re-usable by wrapping them in simple scripts with inputs and outputs designed to facilitate their flexible use in workflows. We aim to make the scripts available via Bioconda packages associated with the component tools (Seurat, Scater ect) and in containters suitable for cloud deployment.
 
-
-
-Contents:
-
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   usage
+   :caption: General
+   overview
    authors
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   :caption: Components
+   :caption: Contributing
 

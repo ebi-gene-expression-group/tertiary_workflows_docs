@@ -1,7 +1,7 @@
 Authors
 -------
 
-* Jonathan Manning
-* Pablo Moreno
+* Jonathan Manning, Gene Expression Group, EBI
+* Pablo Moreno, Gene Expression Group, EBI
 
 
