@@ -23,36 +23,33 @@ Wrapper scripts should be written using the approach demonstrated in https://git
 Use 'env' to locate the Rscript binary in the hash-bang:
 
 .. highlight:: bash
-#!/usr/bin/env Rscript 
-.. highlight:: none
+    #!/usr/bin/env Rscript 
 
 Then load the package 'optparse' (for option parsing) and the common functions package:
 
 .. highlight:: R
-suppressPackageStartupMessages(require(optparse))
-suppressPackageStartupMessages(require(workflowscriptscommon))
-.. highlight:: none
+    suppressPackageStartupMessages(require(optparse))
+    suppressPackageStartupMessages(require(workflowscriptscommon))
 
 Note the use of suppressPackageStartupMessages to make sure we don't ouput more junk to stdout than we need to.
 
 .. highlight:: R
-option_list = list(
-  make_option(
-    c("-d", "--data-dir"),
-    action = "store",
-    default = NA,
-    type = 'character',
-    help = "Directory containing the matrix.mtx, genes.tsv, and barcodes.tsv files provided by 10X. A vector or named vector can be given in order to load several data directories. If a named vector is given, the cell barcode names will be prefixed with the name."
-  ),
-  make_option(
-    c("-o", "--output-object-file"),
-    action = "store",
-    default = NA,
-    type = 'character',
-    help = "File name in which to store serialized R matrix object."
-  )
-)
-.. highlight:: none
+    option_list = list(
+      make_option(
+        c("-d", "--data-dir"),
+        action = "store",
+        default = NA,
+        type = 'character',
+        help = "Directory containing the matrix.mtx, genes.tsv, and barcodes.tsv files provided by 10X. A vector or named vector can be given in order to load several data directories. If a named vector is given, the cell barcode names will be prefixed with the name."
+      ),
+      make_option(
+        c("-o", "--output-object-file"),
+        action = "store",
+        default = NA,
+        type = 'character',
+        help = "File name in which to store serialized R matrix object."
+      )
+    )
 
 
 *******************
