@@ -11,8 +11,7 @@ Prerequisites
 The worfkowscriptscommon package should be installed prior to starting package development. It will be added as a requirement in the Bioconda recipe so we know it will be available in production. For testing purposes you can install it from directly from the Git repo:
 
 .. highlight:: R
-devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon')
-.. highlight:: none
+    devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon')
 
 **************************
 Writing scripts themselves
