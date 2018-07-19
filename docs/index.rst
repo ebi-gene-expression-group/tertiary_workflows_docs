@@ -32,5 +32,6 @@ This project aims to make the components of such workflows more re-usable by wra
    
 .. toctree::
    :caption: Contribution guidelines
+   :hidden:
 
    scripts_for_r_packages
