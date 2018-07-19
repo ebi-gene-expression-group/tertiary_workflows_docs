@@ -11,6 +11,8 @@ Prerequisites
 The worfkowscriptscommon package should be installed prior to starting package development. It will be added as a requirement in the Bioconda recipe so we know it will be available in production. For testing purposes you can install it from directly from the Git repo:
 
 .. highlight:: R
+
+::
     devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon')
 
 **************************
@@ -22,17 +24,23 @@ Wrapper scripts should be written using the approach demonstrated in https://git
 Use 'env' to locate the Rscript binary in the hash-bang:
 
 .. highlight:: bash
+
+::
     #!/usr/bin/env Rscript 
 
 Then load the package 'optparse' (for option parsing) and the common functions package:
 
 .. highlight:: R
+
+::
     suppressPackageStartupMessages(require(optparse))
     suppressPackageStartupMessages(require(workflowscriptscommon))
 
 Note the use of suppressPackageStartupMessages to make sure we don't ouput more junk to stdout than we need to.
 
 .. highlight:: R
+
+::
     option_list = list(
       make_option(
         c("-d", "--data-dir"),
