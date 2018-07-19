@@ -3,11 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+###############################################
 Tertiary workflows for single-cell RNA-seq data
-==================================================
+###############################################
 
+*******
 Project
-==================
+*******
 
 Tertiary workflows in single-cell RNA-seq analysis are, in the definition of the Human Cell Atlas (HCA), those processes occuring subsequent to quantification, such as clustering and trajectory inference.
 
@@ -24,11 +26,11 @@ This project aims to make the components of such workflows more re-usable by wra
 .. toctree::
    :maxdepth: 3
    :hidden:
-   :caption: General
-
-.. toctree::
    :caption: Components
 
+   modules
+   
 .. toctree::
    :caption: Contribution guidelines
 
+   scripts_for_r_packages
