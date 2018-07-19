@@ -21,7 +21,8 @@ Contents:
    :maxdepth: 2
    :glob:
 
-   *
+   usage
+   authors
 
 
 
