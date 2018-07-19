@@ -5,6 +5,7 @@ Writing wrapper scripts for R packages
 The literal blocks are now highlighted as HTML, until a new directive is found.
 
 .. code-block:: html
+
    <html><head></head>
    <body>This is a text.</body>
    </html>
