@@ -2,13 +2,17 @@
 Currently created components
 ############################
 
-See https://github.com/orgs/ebi-gene-expression-group/teams/czi-portals/repositories for a complete list of of all repsoitories associated with this project. The below cover these in more detail.
+The following component projects are ongoing:
 
-******************
-Shared R functions
-******************
+* `workflowscriptscommon <https://github.com/ebi-gene-expression-group/workflowscriptscommon>`_ - Common functions for re-use over R package wrappers
+* `r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`- Wrapper scripts around Seurat R functions
+* `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
+* `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
+* `container-galaxy-sc-tertiary <https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary>` - Galaxy container for single cell RNA-Seq tertiary analysis tools
 
-Wrapping R packages requires some common functions. These are provided in an R package: https://github.com/ebi-gene-expression-group/workflowscriptscommon.
+########
+Progress
+########
 
 **********
 Clustering
