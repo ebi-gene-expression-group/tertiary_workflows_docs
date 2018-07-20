@@ -2,27 +2,14 @@
 Writing wrapper scripts for R packages
 ######################################
 
-Wrapping R package functions and making them available comprises three steps: writing and testing the wrapper scripts and adding to a Bioconda recipe, which will facilitate installation of those scripts on a production system.
-
 **************************
 Prerequisites
 **************************
 
-Bioconda
-========
-
-Install Bioconda (and Conda) using the instructions at https://bioconda.github.io/. 
-
-You will also need conda-build:
-
-.. code-block:: console
-
-    conda install conda-build
-
 workflowscriptscommon R package
 ===============================
 
-This package will be provided in production via a Conda recipe. For development purposed it can be installed directly from GitHub:
+This package will be provided in production via a Conda recipe. For development purposes it can be installed directly from GitHub:
 
 .. code-block:: r
 
@@ -37,14 +24,6 @@ The workflowscriptscommon package defines some simple functions that will be of 
 * wsc_parse_numeric() parses numeric vectors out of strings
 * wsc_split_string() parses character vectors out of strings
 
-***************************
-Create emtpy Git repository
-***************************
-
-Create a repository named for the Bioconda package containing the functions you want to wrap, with a '-scripts' suffix. For example, the Seurat package is called 'r-seurat', so we create a package called r-seurat-scripts.
-
-Create a README for this package similar to https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/README.md, and store all R scripts in the root of the repo.
-
 **************************
 Define inputs and outputs 
 **************************
@@ -57,9 +36,9 @@ Suggested patterns:
 * short string or numeric vectors can be passed as comma-separated strings
 * longer vectors (gene lists etc) can be supplied as files with one entry per line, read via readLines() and written via writeLines()
 
-**************************
-Writing scripts themselves
-**************************
+***************
+Writing scripts
+***************
 
 The wrapper scripts should be written using the approach demonstrated in https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/seurat-read-10x.R. Specifically:
 
@@ -135,97 +114,3 @@ As a final point, make sure all wrapper scripts are executable:
 
     chmod +x <script>
 
-*******************
-Writing test script
-*******************
-
-Once you have written all the wrapper scripts for the package, write a test Shell script that will be provided to the Conda package for testing purposes after installation. You should: 
-
-* Retrieve test data from an online location (don't try and package test data with the scripts)
-* Execute every script you have wrapped using the steps above
-
-For the r-seurat-scripts example see https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/r-seurat-scripts-post-install-tests.sh.
-
-Further guidelines for writing test scripts will be placed here soon.
-
-***********************
-Writing Bioconda recipe
-***********************
-
-A Bioconda recipe is a simple set of configuration files defining where software can be found, and how it may be installed. It is comprised primarily of a meta.yaml file to define metadata associated with a package, and a script, build.sh, which installs the software. See https://bioconda.github.io/contributing.html for detailed info.
-
-To create a new recipe you will need to fork the bioconda-recipes repository from https://github.com/bioconda/bioconda-recipe if your you or your group does not already have a fork. Clone your fork, and from within that clone create a new branch named for your new package (e.g. r-seurat-scripts):
-
-.. code-block:: console
-
-    git checkout -b <package name>
-
-You will eventually submit a request for this branch to be merged, once your development is complete.
-
-Then create a directory for a new recipe:
-
-.. code-block:: console
-
-    mkdir -p recipes/<package name>
-
-Within that new directory create your meta.yaml and build.sh. For r-seurat-scripts meta.yaml looks like:
-
-.. code-block:: css
-
-    {% set version = '0.0.1' %}
-
-    package:
-      name: r-seurat-scripts
-      version: {{ version }}
-
-    source:
-      git_url: https://github.com/ebi-gene-expression-group/r-seurat-scripts.git
-
-    requirements:
-        build:
-            - git
-        run:
-            - r-seurat
-            - r-optparse
-            - r-workflowscriptscommon
-
-    test:
-        commands:
-            - which seurat-read-10x.R
-            - which seurat-create-seurat-object.R
-            - which seurat-normalise-data.R
-            - which seurat-filter-cells.R
-            - which seurat-find-variable-genes.R
-            - which seurat-get-random-genes.R
-            - which seurat-run-pca.R
-            - which seurat-scale-data.R
-            - which seurat-dim-plot.R
-            - which seurat-find-clusters.R
-            - which seurat-run-tsne.R
-            - which seurat-find-markers.R
-            - which r-seurat-scripts-post-install-tests.sh
-
-* The download package is specified under 'source'. We should link to a static version once code has been stabilied, this just points the HEAD of a repository.
-* Requirements define the dependencies you need. You'll need to specify the package you're wrapping here, as well as r-workflowscriptscommon.
-* The test sections runs commands to check the installation has worked. DO NOT run any further testing here- Bioconda is only interested in whether the install works, downstream testing will be done by the user post-install.
-
-r-seurat-script's build.sh script is very simple:
-
-.. code-block:: bash
-
-    #!/usr/bin/env bash
-
-    mkdir -p $PREFIX/bin
-    cp *.R $PREFIX/bin
-    cp *.sh $PREFIX/bin
-
-This simply copies the scripts to conda's build directory.
-
-With these two files in place you can do a test local install of your Bioconda recipe. Make sure you're in the directory for your recipe and then:
-
-.. code-block:: console
-    
-    conda build .
-    conda install --force --use-local r-seurat-scripts
-
-If you've done things correctly this will clone your package repository and install the scripts.

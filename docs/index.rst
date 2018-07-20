@@ -31,5 +31,5 @@ This project aims to make the components of such workflows more re-usable by wra
 .. toctree::
    :caption: Contribution guidelines
 
-   scripts_for_r_packages
+   bioconda_wrapping_tools
    writing_documentation
