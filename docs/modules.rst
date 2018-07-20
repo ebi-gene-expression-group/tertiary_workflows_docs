@@ -1,5 +1,5 @@
 ############################
-components
+Components
 ############################
 
 The stages for 'componentising' a given toolchain are:
