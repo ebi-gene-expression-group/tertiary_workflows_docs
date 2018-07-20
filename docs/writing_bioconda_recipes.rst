@@ -4,7 +4,7 @@
 Writing Bioconda recipes
 ########################
 
-A Bioconda recipe is a simple set of configuration files defining where software can be found, and how it may be installed. It is comprised primarily of a meta.yaml file to define metadata associated with a package, and a script, build.sh, which installs the software. See https://bioconda.github.io/contributing.html for detailed info.
+A Bioconda recipe is comprised primarily of a meta.yaml file to define metadata associated with a package, and a script, build.sh, which installs the software. See https://bioconda.github.io/contributing.html for detailed info.
 
 Clone your fork of bioconda-recipes, and from within that clone create a new branch named for your new package (e.g. r-seurat-scripts):
 

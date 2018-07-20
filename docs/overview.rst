@@ -15,12 +15,5 @@ Objectives
 * Write additional scripts where necessary to expose inividual worklow units as scripts with well-defined inputs and outputs.
 * Build (programming) language-independent standards for input, output and intermediate data types.
 * Make components avialable in as simple a manner as possible, via the Bioconda repository.
+* Make containers available for these packages, suitable for cloud deployment.
 * Make preliminary assessments of individual workflows, components, and 'mixed' workflows. 
-
-**************
-Implementation
-**************
-
-Components will be made available via Bioconda packages associated with those of the source package. For example we will provide scripts to run individual steps of the 'Seurat' package by providing an 'r-seurat-scripts' package associated the existing 'r-seurat' package. The components thus provided can be chained together in common workflow systems (Nextflow, Snakemake, WDL) and we will provide workflows implemented in thise way. 
-
-Since Bioconda packages are 'containerised' automatically to produce containters in the Biocontainers repository, this will also have the effect of providing components for cloud-based workflows. We will leverage these to build cloud-based workflows, for example using Galaxy.

@@ -1,8 +1,8 @@
 #####################################################
-Creating Bioconda scripts packages for software tools
+Writing Bioconda recipes
 #####################################################
 
-This section describes how to create Bioconda packages providing wrapper scripts for individual components of toolkits such as Seurat. You will write wrapper scripts for all necessary components, create a test script to make sure your wrappers operate correctly, and finally write what's called a 'recipe' for Bioconda. When run via 'conda install' This recipe will download the scripts you've written (in this case from GitHub) and install them on host machines. 
+A Bioconda recipe is a simple set of configuration files defining where software can be found, and how it may be installed. The effect is to allow installation via Conda in a 'package manager'-like interface. This section describes how to create Bioconda recipes providing wrapper scripts for individual components of toolkits such as Seurat. You will write wrapper scripts for all necessary components, create a test script to make sure your wrappers operate correctly, and finally write what's called a 'recipe' for Bioconda. When run via 'conda install' This recipe will download the scripts you've written (in this case from GitHub) and install them on host machines. 
 
 **************************
 Prerequisites
@@ -38,6 +38,7 @@ Sub-tasks
 Creating Bioconda packages containg wrapper scripts for the individual steps of a given toolkit involves:
 
 .. toctree::
+    :maxdepth: 1
 
     writing_wrapper_scripts 
     writing_tests
