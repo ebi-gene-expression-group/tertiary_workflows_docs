@@ -49,7 +49,7 @@ Create a README for this package similar to https://github.com/ebi-gene-expressi
 Define inputs and outputs 
 **************************
 
-You will be writing a scripts to wrap one or more functions from an R package. Look at those functions' documentation (?function) record their inputs and outputs their types, and decide how those arguments will be processed by the script. 
+You will be writing scripts to wrap one or more functions from an R package. Look at those functions' documentation (?function) record their inputs and outputs their types, and decide how those arguments will be processed by the script. 
 
 Suggested patterns:
 
@@ -144,7 +144,7 @@ Once you have written all the wrapper scripts for the package, write a test Shel
 * Retrieve test data from an online location (don't try and package test data with the scripts)
 * Execute every script you have wrapped using the steps above
 
-For the r-seurat-scripts exampel see https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/r-seurat-scripts-post-install-tests.sh.
+For the r-seurat-scripts example see https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/r-seurat-scripts-post-install-tests.sh.
 
 Further guidelines for writing test scripts will be placed here soon.
 
