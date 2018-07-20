@@ -5,10 +5,10 @@ Currently created components
 The following component projects are ongoing:
 
 * `workflowscriptscommon <https://github.com/ebi-gene-expression-group/workflowscriptscommon>`_ - Common functions for re-use over R package wrappers
-* `r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`- Wrapper scripts around Seurat R functions
-* `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
-* `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
-* `container-galaxy-sc-tertiary <https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary>` - Galaxy container for single cell RNA-Seq tertiary analysis tools
+* `r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`_ - Wrapper scripts around Seurat R functions
+* `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>`_ - Wrapper scripts around SingleCellExperiment R functions
+* `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>`_ - Wrapper scripts around SingleCellExperiment R functions
+* `container-galaxy-sc-tertiary <https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary>`_ - Galaxy container for single cell RNA-Seq tertiary analysis tools
 
 ########
 Progress
