@@ -5,6 +5,6 @@ Writing toolkit wrapper scripts
 Writing wrapper scripts for toolkits depends on the type of software involved:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
    
     scripts_for_r_packages
