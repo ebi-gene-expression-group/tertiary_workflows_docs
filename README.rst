@@ -1,41 +1,14 @@
-Template
-========
+###############################################
+Tertiary workflows for single-cell RNA-seq data
+###############################################
 
-$project will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+The respository holds documentation associated with a project to develop resuable components for building tertiary (post-quantification) workflows for single-cell RNA-seq data.
 
-Look how easy it is to use:
+Please visit https://tertiary-workflows-docs.readthedocs.io/ to view the documentation or view individual coding projects:
 
-    import project
-    # Get your stuff done
-    project.do_stuff()
+* `workflowscriptscommon <https://github.com/ebi-gene-expression-group/workflowscriptscommon>`_ - Common functions for re-use over R package wrappers
+* `r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`- Wrapper scripts around Seurat R functions
+* `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
+* `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>` - Wrapper scripts around SingleCellExperiment R functions
+* `container-galaxy-sc-tertiary <https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary>` - Galaxy container for single cell RNA-Seq tertiary analysis tools
 
-Features
---------
-
-- Be awesome
-- Make things faster
-
-Installation
-------------
-
-Install $project by running:
-
-    install project
-
-Contribute
-----------
-
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@google-groups.com
-
-License
--------
-
-The project is licensed under the BSD license.
