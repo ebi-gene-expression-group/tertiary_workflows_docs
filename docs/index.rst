@@ -17,7 +17,6 @@ This project aims to make the components of such workflows more re-usable by wra
 
 .. toctree::
    :maxdepth: 3
-   :hidden:
    :caption: General
 
    overview
@@ -25,13 +24,12 @@ This project aims to make the components of such workflows more re-usable by wra
 
 .. toctree::
    :maxdepth: 3
-   :hidden:
    :caption: Components
 
    modules
    
 .. toctree::
    :caption: Contribution guidelines
-   :hidden:
 
    scripts_for_r_packages
+   writing_documentation
