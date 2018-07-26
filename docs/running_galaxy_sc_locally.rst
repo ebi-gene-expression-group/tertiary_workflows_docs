@@ -2,8 +2,15 @@
 Running Galaxy SC Tertiary locally
 ##################################
 
+Galaxy is an open, web-based platform for accessible, reproducible, and
+transparent computational biomedical research.
+
+Within this project, we have created a Galaxy flavour (a Galaxy setup with
+defined tools and workflows) for the tertiary analysis of single cell RNA-Seq data.
+
 This guide shows you how to run the Galaxy Single Cell Tertiary analysis setup
-on your own machine. The setup relies on the Kubernetes container orchestrator.
+on your own machine using Minikube. The setup relies on the Kubernetes container
+orchestrator.
 
 ************
 Requirements
