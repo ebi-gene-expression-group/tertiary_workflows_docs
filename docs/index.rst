@@ -27,9 +27,10 @@ This project aims to make the components of such workflows more re-usable by wra
    :caption: Components
 
    modules
-   
+
 .. toctree::
    :caption: Contribution guidelines
 
    bioconda_wrapping_tools
+   running_galaxy_sc_locally
    writing_documentation
