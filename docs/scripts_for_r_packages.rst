@@ -40,7 +40,9 @@ Suggested patterns:
 Writing scripts
 ***************
 
-The wrapper scripts should be written using the approach demonstrated in https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/seurat-read-10x.R. Specifically:
+Each wrapper script should be named to reflect the r package and the function. For example a wrapper for the calculateCPM() function of scater will be called scater-calculate-cpm.R.
+
+The script content should be as demonstrated in https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/seurat-read-10x.R. Specifically:
 
 Use 'env' to locate the Rscript binary in the hash-bang:
 
