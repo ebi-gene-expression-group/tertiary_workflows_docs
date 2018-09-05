@@ -6,7 +6,7 @@ Writing tests
 Conda recipes
 ****************
 
-See :ref:`writing_bioconda_packages`. Note that Bioconda tests should be limited strictly to making sure the package is installed correctly.
+See :doc:`writing_bioconda_packages`. Note that Bioconda tests should be limited strictly to making sure the package is installed correctly.
 
 ****************
 Wrapper packages
@@ -25,7 +25,7 @@ Do not package test data with your package. Instead include locations from which
 Example: bioconductor-singlecellexperiment-scripts
 ==================================================
 
-The testing setup for `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts/tree/devel>`_ is as follows.
+The testing setup for `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts/tree/devel>`_ at time of writing was as follows (it's probably evolved a bit now, but the example is still valid).
 
 Bash script
 -----------
@@ -157,6 +157,8 @@ There's only one script in this package, so we have a single Bats test:
         fi
         
         run rm -f $raw_singlecellexperiment_object && singlecellexperiment-create-single-cell-experiment.R -a $test_matrix_file -c $test_annotation_file -o $raw_singlecellexperiment_object    
+        echo "status = ${status}"
+        echo "output = ${output}"
         
         [ "$status" -eq 0 ]
         [ -f  "$raw_singlecellexperiment_object" ]
@@ -168,6 +170,59 @@ Things to note:
 
 * We have a conditional use of Bats' 'skip' command. If we have specified that existing outputs should be re-used (via $use_existing_outputs), and if that output file exists, then then test will not run.
 * 'run' is a Bats command which executes a command and stores its return code in '$status'. 
-* Elements afer the 'run' here are simply lists of assertions. We're saying that we should not have a non-zero return code, and the output file should exist once the commmand has run. 
+* The 'echo' elements make sure that we see the full output of any errors- which are otherwise stashed away by Bats.
+* The final bracketed elements are lists of assertions. We're saying that we should not have a non-zero return code, and the output file should exist once the commmand has run. 
 
+Travis CI integration
+^^^^^^^^^^^^^^^^^^^^^
 
+You may find it useful to integrate Travis CI to test the actual scripts during development, prior to adding any changes to a release for use in the Conda package (remember the Conda tests are limited to checking installation). We have found a .travis.yml file like the following to be useful:
+
+.. code-block:: yaml
+
+    before_install:
+      - if test -e $HOME/miniconda/bin; then
+          echo "miniconda already installed.";
+        else
+          if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+            wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+          else
+            wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+          fi
+
+          rm -rf $HOME/miniconda;
+          bash miniconda.sh -b -p $HOME/miniconda;
+          export PATH="$HOME/miniconda/bin:$PATH";
+          hash -r;
+          conda config --set always_yes yes --set changeps1 no;
+          conda update -q conda;
+
+          conda info -a;
+
+          conda config --add channels defaults;
+          conda config --add channels conda-forge;
+          conda config --add channels bioconda;
+
+          conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION r-base r-optparse libpng r-cairo r-workflowscriptscommon bioconductor-singlecellexperiment;
+        fi
+
+    install:
+      - export PATH="$HOME/miniconda/bin:$PATH";
+      - source activate test-environment
+
+    before_script:
+      - export PATH=`pwd`:$PATH
+
+    script: ./bioconductor-singlecellexperiment-scripts-post-install-tests.sh
+
+    cache:
+      directories:
+        - $HOME/miniconda
+        - post_install_tests
+
+      before_cache:
+        - if ! [[ $TRAVIS_TAG ]]; then rm -rf $HOME/miniconda/conda-bld; fi
+        - rm -rf post_install_tests/outputs
+        - rm -rf $HOME/miniconda/locks $HOME/miniconda/pkgs $HOME/miniconda/var $HOME/miniconda/conda-meta/history
+
+This sets up a Conda environment and exectutes the main test script for the package. Note that the conda evironment is cached, as is the directory containing test data, to prevent that data being re-downloaded on every build.

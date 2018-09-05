@@ -75,7 +75,7 @@ Within that new directory create your meta.yaml and build.sh. For r-seurat-scrip
 
 Note that:
 
-* The download package is specified under 'source'. It links to a static version with a checksum (see `the bioconda recipe guidelines <https://bioconda.github.io/guidelines.html#hashes>`_).
+* The download package is specified under 'source'. It links to a static version with a checksum (see `the bioconda recipe guidelines <https://bioconda.github.io/guidelines.html#hashes>`_). There will need to be a tagged release on the source repository to make this possible.
 * Requirements define the dependencies you need. You'll need to specify the package you're wrapping here, as well as r-workflowscriptscommon and r-optparse.
 * The build section as used here (with 'generic') identifies the code as non-platform-specific.
 * The test sections runs commands to check the installation has worked. Using --help makes sure that e.g. optparse has loaded correctly, as well as the scripts being installed. DO NOT run any further testing here- Bioconda is only interested in whether the install works, downstream testing will be done by the user post-install.
@@ -100,6 +100,9 @@ With these two files in place you can do a test local install of your Bioconda r
     conda install --force --use-local r-seurat-scripts
 
 If you've done things correctly this will clone your package repository and install the scripts.
+
+Submitting to Bioconda
+**********************
 
 Before submitting to Bioconda you will need to test the recipe in as close a manner as possible to how Bioconda does, in order to prevent wasting their continuous integration resources with buggy recipes. To do so, follow `the bioconda contribution guidelines <https://bioconda.github.io/contribute-a-recipe.html#test-locally>`_. Ideally, the CircleCI or mulled-build methods should be used, and will use containers to run the tests. This isn't always easy to get working, however, so at a minimum use the non-docker Conda method cited in the documentation:
 
