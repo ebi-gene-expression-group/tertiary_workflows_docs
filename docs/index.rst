@@ -34,8 +34,11 @@ This project aims to make the components of such workflows more re-usable by wra
    running_galaxy_sc_locally   
 
 .. toctree::
+   :maxdepth: 2
    :caption: Contribution guidelines
 
+   adding_scripts_to_wrapper_packages
+   galaxy_community
    bioconda_wrapping_tools
    writing_documentation
 

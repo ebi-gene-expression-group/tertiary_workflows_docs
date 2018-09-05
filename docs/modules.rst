@@ -6,7 +6,7 @@ The stages for 'componentising' a given toolchain are:
 
 * Wrap individual steps and create a Bioconda recipe (package)
 * Create a container based on that package
-* ....
+* ...
 
 
 ****************
@@ -28,21 +28,5 @@ Progress
 Clustering
 ==========
 
-Seurat
-------
+`r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`_, `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>`_ and `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>`_ have initial versions complete and available from Bioconda. 
 
-Wrappers for individual Seurat steps have been written: https://github.com/ebi-gene-expression-group/r-seurat-scripts, and added to a Bioconda recipe (not yet submitted). 
-
-Central functions of the Seurat workflow have been wrapped and are ready for use in workflows. However intermediate formats are currrently dominated by serialized R objects. Additional formats suitable for exchange with other tools willl be implemented in future.
-
-SingleCellExperiment
---------------------
-
-Wrappers for individual SingleCellExperiment steps have been written: https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts, and added to a Bioconda recipe (not yet submitted). 
-
-Outputs a serialised R object of type 'SingleCellExperiment'.
-
-Scater
-------
-
-Work started on Scater wrapper scripts: https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts.
