@@ -101,10 +101,6 @@ With these two files in place you can do a test local install of your Bioconda r
 
 If you've done things correctly this will clone your package repository and install the scripts.
 
-*****************************
-Submitting recipe to Bioconda
-*****************************
-
 Before submitting to Bioconda you will need to test the recipe in as close a manner as possible to how Bioconda does, in order to prevent wasting their continuous integration resources with buggy recipes. To do so, follow `the bioconda contribution guidelines <https://bioconda.github.io/contribute-a-recipe.html#test-locally>`_. Ideally, the CircleCI or mulled-build methods should be used, and will use containers to run the tests. This isn't always easy to get working, however, so at a minimum use the non-docker Conda method cited in the documentation:
 
 .. code-block:: bash
