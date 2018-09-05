@@ -9,11 +9,17 @@ Prerequisites
 workflowscriptscommon R package
 ===============================
 
-This package will be provided in production via a Conda recipe. For development purposes it can be installed directly from GitHub:
+This package contains some generic functions that are used by R scripts in multiple packages. It can be installed using conda, like:
+
+.. code-block:: bash
+
+    conda install r-workflowscriptscommon
+
+If you develop further functions that might be of use across other wrapper scripts, you can propose them for addtion to this package via pull request to the develop branch of the source repository at https://github.com/ebi-gene-expression-group/workflowscriptscommon. If you need to use new functions before they are added to a release and made available via the Bioconda package, you can install the R package directly from GitHub:
 
 .. code-block:: r
 
-    devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon')
+    devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon', ref='develop')
 
 Functions
 -------------------
@@ -23,6 +29,8 @@ The workflowscriptscommon package defines some simple functions that will be of 
 * wsc_parse_args() wraps the use of optparse's OptionParser() for convenience, allowing checks for mandatory arguments
 * wsc_parse_numeric() parses numeric vectors out of strings
 * wsc_split_string() parses character vectors out of strings
+* wsc_read_vector() parses a named vector from a two-column file
+* wsc_write_vector() writes a named vector to a two-column file
 
 **************************
 Define inputs and outputs 
@@ -98,6 +106,13 @@ You may also want to check the values yourself, for example to see if files spec
     if ( ! file.exists(opt$input_object_file)){
       stop((paste('Directory', opt$input_object_file, 'does not exist')))
     }
+
+Translating files to data structures
+====================================    
+
+When writing wrapper scripts pay careful attention to how the data types required for the wrapped R function relate to how that information is supplied to the wrapper script itself. For example, where input is a vector but it's likely to be very short (e.g. a list of gene biotypes), it might be acceptable to supply this list to the script in a simple comma-separated string, which can be parsed into a vector using wsc_split_string(). Longer lists (e.g. gene names) should be supplied in a single-column text file that can be parsed using readLines(). Where vector names are important, for example specifying set of values for a metadata variable for a list of cells, these should be supplied in two-column (label/value) rows which can then be parsed by wsc_read_vector(). 
+
+These datatype handling operations will likely need to evolve- please contribute using the PR mechanism on the workflowscripts common package as mentioned above. 
 
 Processing and outputs
 ======================
