@@ -44,11 +44,13 @@ __ ChartDocs_
 Normal run
 **********
 
-Now the only step needed is to initialize Galaxy through the helm chart just added. For this follow:
+Now the only step needed is to initialize Galaxy through the helm chart just added.
+For this execute:
 
 .. code-block:: bash
 
-   helm install -f tertiary-portals-galaxy-18.05-minikube.yaml galaxy-helm-repo/galaxy-stable
+   helm install -f tertiary-portals-galaxy-18.05-minikube.yaml \
+     --version 2.0.1 galaxy-helm-repo/galaxy-stable
 
 *************
 Access Galaxy
@@ -61,5 +63,4 @@ To access your local Galaxy setup you need to find out the ip from minikube:
    minikube ip
 
 Usually the ip number will be ``192.168.99.100`` (but confirm with the above call).
-Then access on that ip port 30700 with the galaxy prefix ``http://192.168.99.100:30700/galaxy/``.
-Don't forget the trailing ``/``.
+Then access on that ip port 30700 with the galaxy prefix ``http://192.168.99.100:30700/``.
