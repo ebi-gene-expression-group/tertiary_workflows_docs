@@ -85,9 +85,9 @@ https://planemo.readthedocs.io/en/latest/writing_appliance.html. But the two mos
 Executing the above planemo commands will generate scater-read-10x-results.xml, macros.xml and folder test-data and copy of tests data within that folder.
 
 
-Scater-read-10x-results.xml will have have generic input and input variable names. I’ve renamed for clarity. In addition, format of rds was renamed to `rdata` as it widely accepted within galaxy community. Symlinks were created to point input variable names. 
+Scater-read-10x-results.xml will have have generic input and input variable names. I’ve renamed for clarity. In addition, format of rds was renamed to `rdata` as it widely accepted within galaxy community. Symlinks were created to point input variable names. It is also recommended to use the version of bioconductor package used in bioconda to be in `tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amende to "0.0.3" with what bioconda supports. The optional help section in `[CDATA[` describing the options flag function that is associated with input data needs to be moved to input <param section for clarity in galaxy optional usage.
 
-<tool id="scater-read-10x-results" name="Scater read 10x data" version="0.1.0">
+<tool id="scater-read-10x-results" name="Scater read 10x data" version="0.0.3">
     <description>Loads 10x data into a serialized scater R object</description>
     <macros>
         <import>scater_macros.xml</import>
