@@ -26,7 +26,8 @@ Setting up virtual environment Installation of planemo
 
 .. code-block:: bash
 
-    virtualenv .venv; . .venv/bin/activate
+    virtualenv .venv
+    . .venv/bin/activate
     pip install "pip>=7" # Upgrade pip if needed.
     pip install planemo
  
@@ -129,7 +130,7 @@ Note:
 * The format of rds was renamed to :code:`rdata` as it widely accepted within galaxy community 
 * Symlinks were created to point input variable names 
 * It is recommended to use the version of bioconductor package used in bioconda to be in :code:`tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amended to reflect the actual version of the underlying software. In the approach we use here the wrappers called (e.g. from the bioconductor-scater-scripts package) are a thin syntax layer around the tool itself (e.g. Scater), and the version should reflect that of the tool itself, not that of the wrapper. 
-* The preferred version format is "wrapped.software.version+galaxy.wrapper.version", for example "0.0.3+galaxy0". When multiple xml wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example "@TOOL_VERSION@" and the version of each wrapper looks like "@TOOL_VERSION@+galaxy0". The optional help section in :code:`[CDATA[` describing the options flag function that is associated with input data needs to be moved to :xml:`<input> <param /> </input>` section for clarity in galaxy optional usage.
+* The preferred version format is :code:`"wrapped.software.version+galaxy.wrapper.version"`, for example :code:`"0.0.3+galaxy0"`. When multiple xml wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example :code:`"@TOOL_VERSION@"` and the version of each wrapper looks like :code:`"@TOOL_VERSION@+galaxy0"`. The optional help section in :code:`"CDATA[...]"` describing the options flag function that is associated with input data needs to be moved to :code:`"<input> <param .../> </input>"` section for clarity in galaxy optional usage.
 
 Macros
 ======
