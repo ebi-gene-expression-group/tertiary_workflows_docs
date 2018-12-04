@@ -1,11 +1,12 @@
 *Galaxy wrapper generation with Planemo*
 
+Much of this documentation takes information from https://planemo.readthedocs.io/en/latest/readme.html
 
 **************************
 Prerequisites
 **************************
 Installation of 
--  pip
+- pip
 - virtualenv
 - planmeo
 
@@ -85,52 +86,44 @@ https://planemo.readthedocs.io/en/latest/writing_appliance.html. But the two mos
 Executing the above planemo commands will generate scater-read-10x-results.xml, macros.xml and folder test-data and copy of tests data within that folder.
 
 
-Scater-read-10x-results.xml will have have generic input and input variable names. I’ve renamed for clarity. In addition, format of rds was renamed to `rdata` as it widely accepted within galaxy community. Symlinks were created to point input variable names. It is also recommended to use the version of bioconductor package used in bioconda to be in `tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amende to "0.0.3" with what bioconda supports. The optional help section in `[CDATA[` describing the options flag function that is associated with input data needs to be moved to input <param section for clarity in galaxy optional usage.
+Scater-read-10x-results.xml will have have generic input and input variable names. I’ve renamed for clarity. In addition, format of rds was renamed to `rdata` as it widely accepted within galaxy community. Symlinks were created to point input variable names. It is also recommended to use the version of bioconductor package used in bioconda to be in `tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amended to reflect the actual version of the wrapped software. The preferred format is "wrapped.software.version+galaxy.wrapper.version", for example "0.0.3+galaxy0". When multiple xml wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example "@TOOL_VERSION@" and the version of each wrapper looks like "@TOOL_VERSION@+galaxy0". The optional help section in `[CDATA[` describing the options flag function that is associated with input data needs to be moved to input <param section for clarity in galaxy optional usage.
 
-<tool id="scater-read-10x-results" name="Scater read 10x data" version="0.0.3">
+<tool id="scater-read-10x-results" name="Scater read 10x data" version="@TOOL_VERSION@+galaxy0">
     <description>Loads 10x data into a serialized scater R object</description>
     <macros>
         <import>scater_macros.xml</import>
     </macros>
     <expand macro="requirements" />
     <command detect_errors="exit_code"><![CDATA[
-        ln -s '$matrix' matrix.mtx;
-        ln -s '$genes' genes.tsv;
-        ln -s '$barcodes' barcodes.tsv;
+        ln -s '$matrix' matrix.mtx &&
+        ln -s '$genes' genes.tsv &&
+        ln -s '$barcodes' barcodes.tsv &&
 
         scater-read-10x-results.R -d ./ -o '$R_scater_serialized'
     ]]></command>
     <inputs>
-        <param type="data" name="matrix" format="mtx" />
-        <param type="data" name="genes" format="tabular" />
-        <param type="data" name="barcodes" format="tabular" />
+        <param type="data" name="matrix" format="txt" label="Expression quantification matrix in sparse matrix format (.mtx)"/>
+        <param type="data" name="genes" format="tabular" label="Gene table"/>
+        <param type="data" name="barcodes" format="tabular" label="Barcode/Cell table"/>
     </inputs>
     <outputs>
-        <data name="R_scater_serialized" format="rdata" label="" />
+        <data name="R_scater_serialized" format="rdata" label="${tool.name} on ${on_string}: ${output_format}"/>
     </outputs>
     <tests>
         <test>
             <param name="matrix" value="matrix.mtx"/>
             <param name="genes" value="genes.tsv"/>
             <param name="barcodes" value="barcodes.tsv"/>
-            <output name="R_scater_serialized" file="R_scater_serialized.rds"/>
+            <output name="R_scater_serialized" file="R_scater_serialized.rds" ftype="rdata" compare="sim_size"/>
         </test>
     </tests>
     <help><![CDATA[
-        Usage: scater-read-10x-results.R [options]
+scater-read-10x-results.R
+=========================
 
+This is a galaxy interface to scater function read10XResults()
 
-Options:
-	-d DATA-DIR, --data-dir=DATA-DIR
-		Directory containing the matrix.mtx, genes.tsv, and barcodes.tsv files provided by 10X. A vector or named vector can be given in order to load several data directories. If a named vector is given, the cell barcode names will be prefixed with the name.
-
-	-o OUTPUT-OBJECT-FILE, --output-object-file=OUTPUT-OBJECT-FILE
-		File name in which to store serialized R matrix object.
-
-	-h, --help
-		Show this help message and exit
-
-
+For more information check https://www.bioconductor.org/packages/release/bioc/html/scater.html
 
     ]]></help>
     <expand macro="citations" />
@@ -149,13 +142,14 @@ xml block in scater-read-10x-results.xml
 
 <macros>
         <import>scater_macros.xml</import>
- </macros>
+</macros>
 
 Scater_macros.xml
 
 .. code-block:: XML
 
 <macros>
+    <token name="@TOOL_VERSION@">1.6.0</token>
     <xml name="requirements">
         <requirements>
         <requirement type="package" version="0.0.3">bioconductor-scater-scripts</requirement>
@@ -184,6 +178,8 @@ echo $(R --version | grep version | grep -v GNU)", scater version" $(R --vanilla
 
 
 
+
+More information on galaxy wrapper xml schema can be found at https://docs.galaxyproject.org/en/latest/dev/schema.html and best practices for devlopment can be found at https://galaxy-iuc-standards.readthedocs.io/en/latest/best_practices.html.
 
 In order the validate or check for sanity of xml generated planamo provides `lint` command to review the tool and identifies if all checks are OK. The output will look something like this
 
