@@ -47,9 +47,9 @@ Writing wrappers
 
 For full instructions on this refer to Planemo's documentation itself at https://planemo.readthedocs.io/en/latest/writing_appliance.html. Here we will summarise usage for our use case.
 
-The galaxy wrapper essentially includes XML files providing set of instruction to input and output files and files format that are used in bioconda recipes for an associate function. The planemo command `tool_init` takes various arguments and generates the skeletal structure of these XML files. Although XML can be written in a text editor planemo comands makes the process quicker.
+The galaxy wrapper essentially includes XML files providing set of instruction to input and output files and files format that are used in bioconda recipes for an associate function. The planemo command :code:`tool_init` takes various arguments and generates the skeletal structure of these XML files. Although XML can be written in a text editor planemo comands makes the process quicker.
 
-An example demonstration of making a galaxy wrapper for a script, _`scater-read-10x-results`: https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts/blob/ed456544658a17fe58d69ad06b9f88e78ba53c40/scater-read-10x-results.R, which reads 10X data, creates a SingleCellExperiemnt object and saves it in rds (rdata) format. This script is basically an interface to the function `read10xResults()` from Scater. **Note:** this function is now deprecated in Scater with functionality moved to DropletUtils(), we will update this example in due course.  
+An example demonstration of making a galaxy wrapper for a script, :code:`scater-read-10x-results`: https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts/blob/ed456544658a17fe58d69ad06b9f88e78ba53c40/scater-read-10x-results.R, which reads 10X data, creates a SingleCellExperiemnt object and saves it in rds (rdata) format. This script is basically an interface to the function :code:`read10xResults()` from Scater. **Note:** this function is now deprecated in Scater with functionality moved to :code:`DropletUtils()`, we will update this example in due course.  
 
 Before executing the planamo tools, the input test data used in the function to be located within the same environment. For brevity, create a folder with name of interest and store the test data and execute planmo tools within that folder.
 
@@ -78,7 +78,7 @@ Test data:
         --help_from_command 'scater-read-10x-results.R -h'
 
 
-To understand in depth the optional flags are discussed in depth in https://planemo.readthedocs.io/en/latest/writing_appliance.html. But the two most basic ones are `--id` and `--name` which indicates short identifier used by galaxy and short description of the tool respectively. Executing this planemo command will generate scater-read-10x-results.xml, macros.xml and folder test-data and copy of tests data within that folder.
+To understand in depth the optional flags are discussed in depth in https://planemo.readthedocs.io/en/latest/writing_appliance.html. But the two most basic ones are :code:`--id` and :code:`--name` which indicates short identifier used by galaxy and short description of the tool respectively. Executing this planemo command will generate :code:`scater-read-10x-results.xml`, :code:`macros.xml` and folder :code:`test-data` and copy of tests data within that folder.
 
 .. code-block:: xml
 
@@ -125,18 +125,18 @@ To understand in depth the optional flags are discussed in depth in https://plan
 
 Note:
 
-* Scater-read-10x-results.xml will have have generic input and input variable names, renamed here for clarity
-* The format of rds was renamed to `rdata` as it widely accepted within galaxy community 
+* :code:`Scater-read-10x-results.xml` will have have generic input and input variable names, renamed here for clarity
+* The format of rds was renamed to :code:`rdata` as it widely accepted within galaxy community 
 * Symlinks were created to point input variable names 
-* It is recommended to use the version of bioconductor package used in bioconda to be in `tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amended to reflect the actual version of the underlying software. In the approach we use here the wrappers called (e.g. from the bioconductor-scater-scripts package) are a thin syntax layer around the tool itself (e.g. Scater), and the version should reflect that of the tool itself, not that of the wrapper. 
-* The preferred version format is "wrapped.software.version+galaxy.wrapper.version", for example "0.0.3+galaxy0". When multiple xml wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example "@TOOL_VERSION@" and the version of each wrapper looks like "@TOOL_VERSION@+galaxy0". The optional help section in `[CDATA[` describing the options flag function that is associated with input data needs to be moved to input <param section for clarity in galaxy optional usage.
+* It is recommended to use the version of bioconductor package used in bioconda to be in :code:`tool id` version section for consistancy. For example running the above command will default use the version 0.1.0, this needs to be amended to reflect the actual version of the underlying software. In the approach we use here the wrappers called (e.g. from the bioconductor-scater-scripts package) are a thin syntax layer around the tool itself (e.g. Scater), and the version should reflect that of the tool itself, not that of the wrapper. 
+* The preferred version format is "wrapped.software.version+galaxy.wrapper.version", for example "0.0.3+galaxy0". When multiple xml wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example "@TOOL_VERSION@" and the version of each wrapper looks like "@TOOL_VERSION@+galaxy0". The optional help section in :code:`[CDATA[` describing the options flag function that is associated with input data needs to be moved to :xml:`<input> <param /> </input>` section for clarity in galaxy optional usage.
 
 Macros
 ======
 
 macros.xml will help reduce the redundant information in the galaxy wrappers which are repeated. For instance, the version of R used or bioconductor scater packages and a reference to citation and url to github repository.   
 
-The optional flag `--macros` to Planemo will produce two xml files in current directory. Although it will be named macros.xml by default it's renamed here to scater_macros.xml and used the revised name pointing to the same name in Scater-read-10x-results.xml.
+The optional flag :code:`--macros` to Planemo will produce two xml files in current directory. Although it will be named macros.xml by default it's renamed here to scater_macros.xml and used the revised name pointing to the same name in Scater-read-10x-results.xml.
 
 Here is the xml block in scater-read-10x-results.xml
 
@@ -185,7 +185,7 @@ More information on galaxy wrapper xml schema can be found at https://docs.galax
 Linting
 =======
 
-In order the validate or check for sanity of xml generated planamo provides `lint` command to review the tool and identifies if all checks are OK. The output will look something like this
+In order the validate or check for sanity of xml generated planamo provides :code:`lint` command to review the tool and identifies if all checks are OK. The output will look something like this
 
 .. code-block:: bash
 
