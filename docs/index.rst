@@ -40,5 +40,6 @@ This project aims to make the components of such workflows more re-usable by wra
    adding_scripts_to_wrapper_packages
    galaxy_community
    bioconda_wrapping_tools
+   writing_planemo_galaxy_wrapper
    writing_documentation
 
