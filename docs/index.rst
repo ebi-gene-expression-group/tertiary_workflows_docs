@@ -42,7 +42,9 @@ This is a project to increase the re-usability and reproducibility of these work
    :maxdepth: 2
    :caption: Contribution guidelines
 
-   writing_wrapper_scripts
+   provide_wrapper_scripts
+   writing_bioconda_recipes
+   provide_workflow_components
 
 
 ..   adding_scripts_to_wrapper_packages

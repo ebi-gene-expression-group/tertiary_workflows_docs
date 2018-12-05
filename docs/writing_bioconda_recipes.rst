@@ -1,8 +1,8 @@
 .. _writing_bioconda_recipes:
 
-########################
-Writing Bioconda recipes
-########################
+###########################
+2. Create Bioconda packages
+###########################
 
 A Bioconda recipe is comprised primarily of a meta.yaml file to define metadata associated with a package, and a script, build.sh, which installs the software. See https://bioconda.github.io/contributing.html for detailed info.
 
