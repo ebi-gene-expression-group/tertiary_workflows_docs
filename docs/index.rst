@@ -45,11 +45,11 @@ This is a project to increase the re-usability and reproducibility of these work
    provide_wrapper_scripts
    writing_bioconda_recipes
    provide_workflow_components
+   writing_documentation
 
 
 ..   adding_scripts_to_wrapper_packages
      galaxy_community
      bioconda_wrapping_tools
     writing_planemo_galaxy_wrapper
-    writing_documentation
 
