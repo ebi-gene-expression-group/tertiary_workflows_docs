@@ -1,5 +1,5 @@
 #########################################
-3. Provide high-level workflow components
+Provide high-level workflow components
 #########################################
 
 

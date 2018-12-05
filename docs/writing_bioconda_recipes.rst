@@ -6,7 +6,7 @@ Create Bioconda packages
 
 Making packages or scripts available via Bioconda makes them easily available to people using the Conda packaging system. A Conda package is created from a definition called a 'recipe', composed primarily of a meta.yaml file to define metadata associated with a package, and a script, build.sh, which installs the software. See https://bioconda.github.io/contributing.html for detailed info.
 
-If a package you're interested in using is not currently available via Bioconda, you can write a recipe very easily and submit to Bioconda as a PR. Once accepted, the package will be available via the usual 'conda install' mechanism. For example we wanted to use the `DropletUtils <https://bioconductor.org/packages/release/bioc/html/DropletUtils.html>`_ Bioconductor package, and submitted a `PR <https://github.com/bioconda/bioconda-recipes/pull/12448>`_ to add it. Likewise, packages of wrapper scripts can be provided through the same mechanism. As described in the following example.
+If a package you're interested in using is not currently available via Bioconda, you can write a recipe very easily and submit to Bioconda as a PR. Once accepted, the package will be available via the usual 'conda install' mechanism. For example we wanted to use the `DropletUtils <https://bioconductor.org/packages/release/bioc/html/DropletUtils.html>`_ Bioconductor package, and submitted a `PR <https://github.com/bioconda/bioconda-recipes/pull/12448>`_ to add it. Likewise, packages of wrapper scripts can be provided through the same mechanism, as described in the following example.
 
 Example: r-seurat-scripts
 =========================
