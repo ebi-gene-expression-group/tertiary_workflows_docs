@@ -3,25 +3,26 @@ Writing wrapper scripts for R packages
 ######################################
 
 **************************
-Prerequisites
+Recommended resources
 **************************
+
+optparse
+========
+
+We recommend use of the `optparse <https://cran.r-project.org/web/packages/optparse/index.html>`_ package for development of user-friendly R scripts. 
 
 workflowscriptscommon R package
 ===============================
 
-This package contains some generic functions that are used by R scripts in multiple packages. It can be installed using conda, like:
+We have built the `workflowscriptscommon <https://github.com/ebi-gene-expression-group/workflowscriptscommon>`_ package to hold functions common to R script wrapper writing. Using this package (and adding functions where required) is a useful way of reducing repetition between R wrappers.
+
+The package is available in Bioconda and can be installed using conda, like:
 
 .. code-block:: bash
 
     conda install r-workflowscriptscommon
 
-If you develop further functions that might be of use across other wrapper scripts, you can propose them for addtion to this package via pull request to the develop branch of the source repository at https://github.com/ebi-gene-expression-group/workflowscriptscommon. If you need to use new functions before they are added to a release and made available via the Bioconda package, you can install the R package directly from GitHub:
-
-.. code-block:: r
-
-    devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon', ref='develop')
-
-Functions
+Existing functions
 -------------------
 
 The workflowscriptscommon package defines some simple functions that will be of use in writing wrappers:
@@ -32,11 +33,20 @@ The workflowscriptscommon package defines some simple functions that will be of 
 * wsc_read_vector() parses a named vector from a two-column file
 * wsc_write_vector() writes a named vector to a two-column file
 
+New functions
+-------------
+
+If you develop further functions that might be of use across other wrapper scripts, you can propose them for addtion to this package via pull request to the develop branch of the source repository at https://github.com/ebi-gene-expression-group/workflowscriptscommon. If you need to use new functions before they are added to a release and made available via the Bioconda package, you can install the R package directly from GitHub:
+
+.. code-block:: r
+
+    devtools::install_github('https://github.com/ebi-gene-expression-group/workflowscriptscommon', ref='develop')
+
 **************************
 Define inputs and outputs 
 **************************
 
-You will be writing scripts to wrap one or more functions from an R package. Look at those functions' documentation (?function) record their inputs and outputs their types, and decide how those arguments will be processed by the script. 
+The first step in writing a wrapper script is to define inputs and outputs and which function(s) are required to run the desired process. Look at those functions' documentation (?function), record their inputs and outputs their types, and decide how those arguments will be processed by the script. 
 
 Suggested patterns:
 
@@ -48,9 +58,9 @@ Suggested patterns:
 Writing scripts
 ***************
 
-Each wrapper script should be named to reflect the r package and the function. For example a wrapper for the calculateCPM() function of scater will be called scater-calculate-cpm.R.
+Each wrapper script should be named to reflect the r package and the functions called as closely as possible. For example a wrapper for the single calculateCPM() function of scater will be called scater-calculate-cpm.R. For more complex wrappers involving multiple function calls, make sure your naming is sensible and easily interpretable by the user. We prefer hyphenated script names.
 
-The script content should be as demonstrated in https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/seurat-read-10x.R. Specifically:
+An example wrapper scripts is `seurat-read-10x.R <https://github.com/ebi-gene-expression-group/r-seurat-scripts/blob/master/seurat-read-10x.R>`_ from the r-seurat-scripts package. Some useful conventions demonstrated there are:
 
 Use 'env' to locate the Rscript binary in the hash-bang:
 
