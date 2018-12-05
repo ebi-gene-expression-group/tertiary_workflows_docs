@@ -1,8 +1,10 @@
 ###########################################
-Galaxy wrapper generation with Planemo
+Creating Galaxy wrappers
 ###########################################
 
-The tool we use to facilitate Galaxy wrapper generation is Planemo. For more information on the following refer to https://planemo.readthedocs.io/en/latest/readme.html.
+`Galaxy <https://galaxyproject.org/>`_ is a popular tool for writing and running workflows. Tools are given Galaxy wrappers which then provide a web-based user interface for that tool with outputs of defined types which can be passed to other tools. 
+
+Galaxy wrappers are just XML files, but writing them well can be tricky. The tool we recommend to facilitate Galaxy wrapper generation is Planemo, and we introduce so basic instructions for its operation here. For more information on the following refer to https://planemo.readthedocs.io/en/latest/readme.html.
 
 **************************
 Prerequisites
