@@ -1,5 +1,5 @@
 ###########################################
-Creating Galaxy wrappers
+Galaxy wrappers
 ###########################################
 
 `Galaxy <https://galaxyproject.org/>`_ is a popular tool for writing and running workflows. Tools are given Galaxy wrappers which then provide a web-based user interface for that tool with outputs of defined types which can be passed to other tools. 

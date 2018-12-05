@@ -29,7 +29,7 @@ This is a project to increase the re-usability and reproducibility of these work
 
 .. toctree::
    :maxdepth: 3
-   :caption: Components
+   :caption: Currently available components
 
    modules
 
