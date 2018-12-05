@@ -1,11 +1,12 @@
 ##########################
-1. Provide wrapper scripts
+Provide wrapper scripts
 ##########################
 
-You can help by writing or providing your wrapper scripts to make functionality from libraries more accessible from the command line. 
+You can help by writing or providing your wrapper scripts to make functionality from libraries more accessible from the command line. Adhering to some standards while doing this makes scripts more useful to the community 
 
 .. toctree::
     :maxdepth: 2
    
-    writing_wrapper_scripts
+    scripts_for_r_packages
+    scripts_for_python_packages
     adding_scripts_to_wrapper_packages
