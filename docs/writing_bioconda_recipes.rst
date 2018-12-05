@@ -8,8 +8,9 @@ Making packages or scripts available via Bioconda makes them easily available to
 
 If a package you're interested in using is not currently available via Bioconda, you can write a recipe very easily and submit to Bioconda as a PR. Once accepted, the package will be available via the usual 'conda install' mechanism. For example we wanted to use the `DropletUtils <https://bioconductor.org/packages/release/bioc/html/DropletUtils.html>`_ Bioconductor package, and submitted a `PR <https://github.com/bioconda/bioconda-recipes/pull/12448>`_ to add it. Likewise, packages of wrapper scripts can be provided through the same mechanism, as described in the following example.
 
+*************************
 Example: r-seurat-scripts
-=========================
+*************************
 
 Create and Clone a fork of `bioconda-recipes <https://github.com/bioconda/bioconda-recipes>`_, and from within that clone create a new branch named for your new package (e.g. r-seurat-scripts):
 
@@ -120,6 +121,7 @@ With these two files in place you can do a test local install of your Bioconda r
 
 If you've done things correctly this will clone your package repository and install the scripts.
 
+**********************
 Submitting to Bioconda
 **********************
 

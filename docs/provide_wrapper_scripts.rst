@@ -10,3 +10,4 @@ You can help by writing or providing your wrapper scripts to make functionality 
     scripts_for_r_packages
     scripts_for_python_packages
     adding_scripts_to_wrapper_packages
+    writing_tests
