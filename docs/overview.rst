@@ -2,9 +2,15 @@
 Project overview
 ################
 
-This project is concerned with building infrastructure for benchmarking components of tertiary (post-quantification) pipelines in single-cell RNA-seq analysis.
+Single-cell tertiary analyses include step such as:
 
-Pipelines for tertiary analyses such as clustering are built from individual components representing logical steps such as expression matrix normalisation, cell filtering, computation of dimension reductions and clustering itself. These steps may be implemented in a variety of ways including stand-alone tools, scripts, or R package functions. To compare equivalent logical steps between workflows, and to 'mix and match' those components for optimal workflows is therefore a challenging excercise without additional infrastructure.
+* expression matrix normalisation
+* cell filtering
+* computation of dimension reductions
+* clustering itself
+  
+
+These steps may be implemented in a variety of ways including stand-alone tools, scripts, or R package functions. To compare equivalent logical steps between workflows, and to 'mix and match' those components for optimal workflows is therefore a challenging excercise without additional infrastructure.
 
 We aim to 'componentise' tools associated with these workflows and more importantly build standards and infrastructure to facilitate this process for others in future.
 

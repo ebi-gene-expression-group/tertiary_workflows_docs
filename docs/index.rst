@@ -11,9 +11,14 @@ Tertiary workflows for single-cell RNA-seq data
 Project
 *******
 
-Tertiary workflows in single-cell RNA-seq analysis are, in the definition of the Human Cell Atlas (HCA), those processes occuring subsequent to quantification, such as clustering and trajectory inference.
+Tertiary workflows in single-cell RNA-seq analysis are, in the definition of the Human Cell Atlas (HCA), those processes occuring subsequent to quantification, such as clustering and trajectory inference. Example libraries implementing these analyses are Seurat, Scater and Scanpy.
 
-This project aims to make the components of such workflows more re-usable by wrapping them in simple scripts with inputs and outputs designed to facilitate their flexible use in workflows. We aim to make the scripts available via Bioconda packages associated with the component tools (Seurat, Scater ect) and in containters suitable for cloud deployment.
+This is a project to increase the re-usability and reproducibility of these workflows, to facilitate comparison and benchmarking. Our strategy is:
+
+1. Provide command-line access to individual library functions through simple wrapper scripts packaged with Bioconda.
+2. Enable pipeline inter-operability by adopting and/or improving file format standards (e.g. Loom) which can be read and written by a variety of packages.
+3. Facilitate the generation of workflows built on the above components, in environments such as Galaxy and Nextflow, for deployment in platform-agnostic ways.
+   
 
 .. toctree::
    :maxdepth: 2
@@ -24,7 +29,7 @@ This project aims to make the components of such workflows more re-usable by wra
 
 .. toctree::
    :maxdepth: 3
-   :caption: Components
+   :caption: Currently available components
 
    modules
 
@@ -37,9 +42,14 @@ This project aims to make the components of such workflows more re-usable by wra
    :maxdepth: 2
    :caption: Contribution guidelines
 
-   adding_scripts_to_wrapper_packages
-   galaxy_community
-   bioconda_wrapping_tools
-   writing_planemo_galaxy_wrapper
+   provide_wrapper_scripts
+   writing_bioconda_recipes
+   provide_workflow_components
    writing_documentation
+
+
+..   adding_scripts_to_wrapper_packages
+     galaxy_community
+     bioconda_wrapping_tools
+    writing_planemo_galaxy_wrapper
 

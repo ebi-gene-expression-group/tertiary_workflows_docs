@@ -2,23 +2,14 @@
 Writing tests
 #############
 
-****************
-Conda recipes
-****************
-
-See :doc:`writing_bioconda_packages`. Note that Bioconda tests should be limited strictly to making sure the package is installed correctly.
-
-****************
-Wrapper packages
-****************
-
-You should write scripts containing testing code which can be run by users after installation of your package (probably via Conda). The test suite per package is composed of at least:
+Along with any collection of scripts you write for a package, you should provide  testing code which can be run by users after installation of your package (probably via Conda). The test suite per package is composed of at least:
 
 * A bash script which sets up variables, defines inputs and outputs, and exports them, named for the package so that it does not clash with similar scripts when installed by Conda. So the package bioconductor-singlecellexperiment-scripts has a test script called bioconductor-singlecellexperiment-scripts-post-install-tests.sh.
 * A set of 'bats' tests (see https://github.com/bats-core/bats-core) to make sure all the tools run. 
 
+*********
 Test data
-=========
+*********
 
 Do not package test data with your package. Instead include locations from which data can be downloaded during testing.
 
@@ -174,9 +165,9 @@ Things to note:
 * The final bracketed elements are lists of assertions. We're saying that we should not have a non-zero return code, and the output file should exist once the commmand has run. 
 
 Travis CI integration
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
-You may find it useful to integrate Travis CI to test the actual scripts during development, prior to adding any changes to a release for use in the Conda package (remember the Conda tests are limited to checking installation). We have found a .travis.yml file like the following to be useful:
+You may find it useful to integrate Travis CI to test scripts automatically during development. We have found a .travis.yml file like the following to be useful:
 
 .. code-block:: yaml
 
