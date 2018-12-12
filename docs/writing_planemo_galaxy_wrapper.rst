@@ -32,7 +32,23 @@ Setting up virtual environment Installation of planemo
     . .venv/bin/activate
     pip install "pip>=7" # Upgrade pip if needed.
     pip install planemo
- 
+
+Install problems (probably temporary)
+-------------------------------------
+
+We are currently experiencing blank white screens with Galaxy installs, due to the client parts of Galaxy not being installed correctly. This occurs with the Galaxy installed by Planemo. To address the problem you need to install Galaxy separately and make a couple of tweaks:
+
+* Download the latest Galaxy in a separate directory and do the the 'run.sh' step.
+* You may see an error like "Cannot uninstall 'certifi'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall." In this case the certifi entries to certifi==2018.10.15 in lib/galaxy/dependencies/dev-requirements.txt and requirements.txt and try again.
+* You may well see install problems with nodejs. In this case you need to activate the conda environment used by Galaxy and downgrade nodejs to a 9* version (the latest and default version installed is 10*)
+
+Provided the Galaxy install gets most of the way through such that the client is in place, you can then point at this Galaxy install from Planemo with commands like the following (see below):
+
+.. code-block:: bash
+
+    planemo serve --galaxy_root ../galaxy
+
+
 Installing bioconda packages
 ============================
 
