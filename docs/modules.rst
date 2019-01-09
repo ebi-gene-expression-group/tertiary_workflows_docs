@@ -18,6 +18,7 @@ Wrapper script packages
 
 * `workflowscriptscommon <https://github.com/ebi-gene-expression-group/workflowscriptscommon>`_ - Common functions for re-use over R package wrappers
 * `bioconductor-singlecellexperiment-scripts <https://github.com/ebi-gene-expression-group/bioconductor-singlecellexperiment-scripts>`_ - Wrapper scripts around SingleCellExperiment R functions
+* `dropletutils-scripts <https://github.com/ebi-gene-expression-group/dropletutils-scripts>`_ - Wrapper scripts for DropletUtils R functions
 * `bioconductor-scater-scripts <https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts>`_ - Wrapper scripts around Scater R functions
 * `bioconductor-sc3-scripts <https://github.com/ebi-gene-expression-group/bioconductor-sc3-scripts>`_ - Wrapper scripts around SC3 R functions
 * `r-seurat-scripts <https://github.com/ebi-gene-expression-group/r-seurat-scripts>`_ - Wrapper scripts around Seurat R functions
@@ -31,10 +32,15 @@ The above packages have been made available via Bioconda in the packages:
 
 * `r-workflowscriptscommon <https://anaconda.org/bioconda/r-workflowscriptscommon>`_
 * `bioconductor-singlecellexperiment-scripts <https://anaconda.org/bioconda/bioconductor-singlecellexperiment-scripts>`_
+* `dropletutils-scripts <https://anaconda.org/bioconda/dropletutils-scripts>`_
 * `bioconductor-scater-scripts <https://anaconda.org/bioconda/bioconductor-scater-scripts>`_
 * `bioconductor-sc3-scripts <https://anaconda.org/bioconda/bioconductor-sc3-scripts>`_
 * `r-seurat-scripts <https://anaconda.org/bioconda/r-seurat-scripts>`_
 * `scanpy-scripts <https://anaconda.org/bioconda/scanpy-scripts>`_
+
+We also added the previously missing Bioconda package for the DropletUtils Bioconductor package itself:
+
+* `bioconductor-dropletutils <https://anaconda.org/bioconda/bioconductor-dropletutils>`_
 
 **********
 Containers
@@ -44,6 +50,8 @@ Use of Bioconda packages means we get containers 'for free' as well. See contain
 
 * `r-workflowscriptscommon <https://quay.io/repository/biocontainers/r-workflowscriptscommon>`_
 * `bioconductor-singlecellexperiment-scripts <https://quay.io/repository/biocontainers/bioconductor-singlecellexperiment-scripts>`_
+* `bioconductor-dropletutils <https://quay.io/repository/biocontainers/bioconductor-dropletutils>`_
+* `dropletutils-scripts <https://quay.io/repository/biocontainers/dropletutils-scripts>`_
 * `bioconductor-scater-scripts <https://quay.io/repository/biocontainers/bioconductor-scater-scripts>`_
 * `bioconductor-sc3-scripts <https://quay.io/repository/biocontainers/bioconductor-sc3-scripts>`_
 * `r-seurat-scripts <https://quay.io/repository/biocontainers/r-seurat-scripts>`_
@@ -59,8 +67,3 @@ Galaxy components
 
 
 
-************
-Ongoing work
-************
-
-Recent updates in Bioconda provide access to newer versions of Bioconductor packages. In particular we're aware that our Scater wrappers are currently out of date, for example the function for reading 10X data is removed in favour of `DropletUtils <https://bioconductor.org/packages/release/bioc/html/DropletUtils.html>`_. Updates will be applied in due course.
