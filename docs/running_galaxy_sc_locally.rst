@@ -39,7 +39,7 @@ If using helm for the first time, you will need to initialise helm on the cluste
 .. code-block:: bash
 
   helm init --wait
-   helm repo add galaxy-helm-repo https://pcm32.github.io/galaxy-helm-charts
+  helm repo add galaxy-helm-repo https://pcm32.github.io/galaxy-helm-charts
 
 
 if you have done this once in the past, you might need, from time to time, to update the local repo, by doing:
