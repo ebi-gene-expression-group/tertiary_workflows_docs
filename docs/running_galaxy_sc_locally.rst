@@ -2,7 +2,7 @@
 Running Hinxton Single Cell Interactive Analysis Environment
 ############################################################
 
-Hinxton Single Cell is Galaxy setup with tools tertiary analysis of single cell data.
+Hinxton Single Cell is a Galaxy setup with tools for tertiary analysis of single cell data.
 Galaxy is an open, web-based platform for accessible, reproducible, and
 transparent computational biomedical research.
 
@@ -20,7 +20,7 @@ Requirements
 - Helm installed: Please follow `official instructions for installing Helm <https://github.com/helm/helm/blob/master/docs/install.md#installing-the-helm-client>`_.
 - Access to a Kubernetes cluster (with shared file system accessible through a Persistent Volume or equivalent).
   - For development purposes or local tests, the local Minikube environment can be used. Install minikube following `official instructions for minikube <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_.
-- kubectl cli: The command line argument for connection to a Kubernetes instance (remote cluster or local minikube). If not installed as part of Minikube steps, follow ONLY the installation steps (not the configuration ones) from `here <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`_).
+- kubectl cli: The command line argument for connection to a Kubernetes instance (remote cluster or local minikube). If not installed as part of Minikube steps, follow ONLY the installation steps (not the configuration ones) from `here <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`_.
 
 ________
 Minikube
@@ -52,11 +52,11 @@ if you have done this once in the past, you might need, from time to time, to up
 Retrieve and customise configuration file
 *****************************************
 
-The galaxy-stable Helm chart that we will use allows to configure most Galaxy
+The galaxy-stable Helm chart that we will use allows the configuration of most Galaxy
 settings. For that, get the `sample config file <https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary/blob/1.0.0/helm-configs/hinxton-singlecell-1.0.0_g18.05-minikube.yaml>`_.
 
 Edit or make a copy of this file based on your needs and the
-`galax-stable chart documentation`__. However, if you only need to run on
+`galaxy-stable chart documentation`__. However, if you only need to run on
 Minikube, the sample config file should do fine. You might want to set a user
 and password there.
 
