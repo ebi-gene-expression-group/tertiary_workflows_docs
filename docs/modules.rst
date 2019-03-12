@@ -2,15 +2,18 @@
 Components
 ############################
 
+.. contents::
+
 We are building components in the following categories:
 
 * Wrappers script packages for common single-cell analysis toolkits
 * Bioconda packages to facilitate wrapper availability
 * Bioconda packages for any previously missing packages
 * Containers for Bioconda packages (mostly created automatically via Bioconda)
-* Galaxy wrappers for Bioconda-packages wrappers
+* Galaxy wrappers for Bioconda-packages wrappers, and associated workflows
+* Nextflow workflows built on packaged script components
 
-This page details components developed as part of this project..
+This page details these components.
 
 .. _script_components:
 
