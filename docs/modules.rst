@@ -67,20 +67,84 @@ We have also developed the following:
 Galaxy components
 *****************
 
-The following components will shortly be available in a Galaxy 'toolshed':
+The following components will shortly be available in a Galaxy 'toolshed'. These are all powered by the same scripts and Conda packages described above, and in this way analyses can be made consistent, whatever workflow construct is used to connect them.
 
 Scanpy
 ======
 
+(currently at v1.3.2)
+
+* Read10x - Read 10x into hdf5 object handled by scanpy
+* Filter cells - FilterCells based on counts and numbers of genes expressed
+* Filter genes - Filter genes based on counts and numbers of cells expressed
+* NormaliseData - Normalise data to make all cells having the same total expression
+* FindVariableGenes - Find variable genes based on normalised dispersion of expression
+* ScaleData - Scale data to make expression variance the same for all genes
+* Run PCA - Run PCA for dimensionality reduction
+* ComputeGraph - Compute graph to derive kNN graph
+* FindCluster - Find clusters based on community detection on KNN graph
+* RunUMAP - Run UMAP to visualise cell clusters using UMAP
+* RunTSNE - Run tSNE to visualise cell clusters using tSNE
+* FindMarkers - FindMarkers to find differentially expressed genes between groups
+
+R/Bioconductor SingleCellExperiment ecosystem
+=============================================
+
+DropletUtils
+------------
+
+(currently at v1.0.3)
+
+Read 10x data into a SingleCellExperiment object
+
 Scater
-======
+------
+
+(currently at v1.8.4)
+
+* CalculateCPM	- CalculateCPM from raw counts
+* Normalise	- Normalise expression values by library size in log2 scale
+* CalculateQcMetrics - CalculateQcMetrics based on expression values and experiment information
+* DetectOutlier - DetectOutlier cells based on expression metrics
+* Filter - Filter cells and genes based on pre-calculated stats and QC metrics
 
 SC3
-===
+---
+
+(currently at v1.8.0)
+
+* Prepare - Prepare a sc3 SingleCellExperiment object
+* Estimate -Estimate the number of clusters for k-means clustering
+* Calculate - Transformations Calculate Transformations of distances using PCA and graph Laplacian
+* Calculate - Distances Calculate Distances between cells
+* K-Means - K-Means perform k-means clustering
+* Calculate - Consensus Calculate Consensus from multiple runs of k-means clustering
+* DiffExp - Calculates DE genes, marker genes and cell outliers
 
 Seurat
 ======
 
+(currently at v2.3.1)
+
+* Read10x - Loads 10x data into a serialized seurat R object
+* CreateSeuratObject - create a Seurat object
+* FilterCells - filter cells in a Seurat object
+* NormaliseData - normalise data
+* FindVariableGenes - identify variable genes
+* ScaleData - scale and center genes
+* RunPCA - run a PCA dimensionality reduction
+* RunTSNE - run t-SNE dimensionality reduction
+* Plot dimension reduction - graphs the output of a dimensional reduction technique (PCA by default). Cells are colored by their identity class.
+* FindClusters - find clusters of cells
+* FindMarkers - find markers (differentially expressed genes)
+* Export2CellBrowser - Export2CellBrowser produces files for UCSC CellBrowser import.
+
+UCSC Cell Browser
+=================
+
+(currently at 0.4.38)
+
+UCSC Cell Browser displays single-cell clusterized data in an interactive web application.
 
 *******************
 Low-level workflows
