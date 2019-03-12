@@ -78,7 +78,7 @@ Scanpy
 (currently at v1.3.2)
 
 * Read10x - Read 10x into hdf5 object handled by scanpy
-* FilterCells - FilterCells based on counts and numbers of genes expressed
+* FilterCells - Filter cells based on counts and numbers of genes expressed
 * FilterGenes - Filter genes based on counts and numbers of cells expressed
 * NormaliseData - Normalise data to make all cells having the same total expression
 * FindVariableGenes - Find variable genes based on normalised dispersion of expression
