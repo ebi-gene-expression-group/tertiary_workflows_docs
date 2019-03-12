@@ -12,4 +12,4 @@ Workflow component types
     :maxdepth: 1
 
     writing_planemo_galaxy_wrapper.rst 
-
+    nextflow_workflows.rst    
