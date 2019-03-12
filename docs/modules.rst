@@ -12,6 +12,8 @@ We are building components in the following categories:
 
 This page details components developed as part of this project..
 
+.. _script_components:
+
 *************************************
 Wrapper script packages
 *************************************
@@ -64,6 +66,20 @@ We have also developed the following:
 *****************
 Galaxy components
 *****************
+
+The following components will shortly be available in a Galaxy 'toolshed':
+
+Scanpy
+======
+
+Scater
+======
+
+SC3
+===
+
+Seurat
+======
 
 
 *******************
