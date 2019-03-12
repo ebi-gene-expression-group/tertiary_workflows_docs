@@ -34,8 +34,8 @@ The above packages have been made available via Bioconda in the packages:
 * `bioconductor-singlecellexperiment-scripts <https://anaconda.org/bioconda/bioconductor-singlecellexperiment-scripts>`_
 * `dropletutils-scripts <https://anaconda.org/bioconda/dropletutils-scripts>`_
 * `bioconductor-scater-scripts <https://anaconda.org/bioconda/bioconductor-scater-scripts>`_
-* `bioconductor-sc3-scripts <https://anaconda.org/bioconda/bioconductor-sc3-scripts>`_
-* `r-seurat-scripts <https://anaconda.org/bioconda/r-seurat-scripts>`_
+* `sc3-scripts <https://anaconda.org/bioconda/sc3-scripts>`_
+* `seurat-scripts <https://anaconda.org/bioconda/seurat-scripts>`_
 * `scanpy-scripts <https://anaconda.org/bioconda/scanpy-scripts>`_
 
 We also added the previously missing Bioconda package for the DropletUtils Bioconductor package itself:
@@ -53,8 +53,8 @@ Use of Bioconda packages means we get containers 'for free' as well. See contain
 * `bioconductor-dropletutils <https://quay.io/repository/biocontainers/bioconductor-dropletutils>`_
 * `dropletutils-scripts <https://quay.io/repository/biocontainers/dropletutils-scripts>`_
 * `bioconductor-scater-scripts <https://quay.io/repository/biocontainers/bioconductor-scater-scripts>`_
-* `bioconductor-sc3-scripts <https://quay.io/repository/biocontainers/bioconductor-sc3-scripts>`_
-* `r-seurat-scripts <https://quay.io/repository/biocontainers/r-seurat-scripts>`_
+* `sc3-scripts <https://quay.io/repository/biocontainers/sc3-scripts>`_
+* `seurat-scripts <https://quay.io/repository/biocontainers/seurat-scripts>`_
 * `scanpy-scripts <https://quay.io/repository/biocontainers/scanpy-scripts>`_
 
 We have also developed the following:
@@ -66,4 +66,11 @@ Galaxy components
 *****************
 
 
+*******************
+Low-level workflows
+*******************
+
+The following `Nextflow <https://www.nextflow.io/>`_ workflows are available:
+
+* `scanpy-workflow <https://github.com/ebi-gene-expression-group/scanpy-workflow>`_ - This is a fully pameterised workflow linking the components of  `scanpy-scripts <https://github.com/ebi-gene-expression-group/scanpy-scripts>`_.
 
