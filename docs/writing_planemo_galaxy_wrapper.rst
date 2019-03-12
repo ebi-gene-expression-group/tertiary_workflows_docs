@@ -4,14 +4,17 @@ Galaxy wrappers
 
 `Galaxy <https://galaxyproject.org/>`_ is a popular tool for writing and running workflows. Tools are given Galaxy wrappers which then provide a web-based user interface for that tool with outputs of defined types which can be passed to other tools. 
 
+***********************
+Writing Galaxy wrappers
+***********************
+
 Galaxy wrappers are just XML files, but writing them well can be tricky. The tool we recommend to facilitate Galaxy wrapper generation is Planemo, and we introduce basic instructions for its operation here. For more information on the following refer to https://planemo.readthedocs.io/en/latest/readme.html.
 
-**************************
 Prerequisites
-**************************
+==================
 
 pip and virtualenv
-==================
+------------------
 
 Before installing Planemo, install the latest version of pip 7.0 or greater and virtualenv-1.9 or greater. To install virtualenv globally with pip (if you have pip 1.3 or greater installed globally):
 
@@ -22,7 +25,7 @@ Before installing Planemo, install the latest version of pip 7.0 or greater and 
 Refer to user documents for further information https://virtualenv.pypa.io/en/stable/installation/
 
 Planemo
-=======
+-------
 
 Setting up virtual environment Installation of Planemo
 
@@ -34,7 +37,7 @@ Setting up virtual environment Installation of Planemo
     pip install planemo
 
 Install problems (probably temporary)
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We are currently experiencing blank white screens with Galaxy installs, due to the client parts of Galaxy not being installed correctly. This occurs with the Galaxy installed by Planemo. To address the problem you need to install Galaxy separately and make a couple of tweaks:
 
@@ -50,7 +53,7 @@ Provided the Galaxy install gets most of the way through such that the client is
 
 
 Installing bioconda packages
-============================
+----------------------------
 
 Developing galaxy tools wrappers for a particular bioconda recipe requires installation of the package in the same environment.  
 
@@ -60,9 +63,8 @@ For example, installing bioconda scater scripts package can be done like:
 
     conda install bioconductor-scater-scripts
 
-**************************
-Writing wrappers
-**************************
+Writing wrapper XML
+====================
 
 For full instructions on this refer to Planemo's documentation itself at https://planemo.readthedocs.io/en/latest/writing_appliance.html. Here we will summarise usage for our use case.
 
@@ -152,7 +154,7 @@ Note:
   - The preferred version format is :code:`"wrapped.software.version+galaxy.wrapper.version"`, for example :code:`"0.0.3+galaxy0"`. When multiple xml file wrap around the same software and therefore share the same software version, it can be replaced by a token that is defined in macros.xml, for example :code:`"@TOOL_VERSION@"` and the version of each wrapper looks like :code:`"@TOOL_VERSION@+galaxy0"`. The optional help section in :code:`"CDATA[...]"` describing the options flag function that is associated with input data needs to be moved to :code:`"<input> <param .../> </input>"` section for clarity in galaxy optional usage.
 
 Macros
-======
+------
 
 macros.xml will help reduce the redundant information in the galaxy wrappers which are repeated. For instance, the version of R used or bioconductor packages and a reference to citation and url to github repository.   
 
@@ -203,7 +205,7 @@ Here is scater_macros.xml
 More information on galaxy wrapper xml schema can be found at https://docs.galaxyproject.org/en/latest/dev/schema.html and best practices for development can be found at https://galaxy-iuc-standards.readthedocs.io/en/latest/best_practices.html.
 
 Linting
-=======
+-------
 
 In order to validate or sanity check the generated XML, Planemo provides the :code:`lint` command to review the tool. The output will look something like this:
 
@@ -238,4 +240,3 @@ We can also test for execution of the R wrapper using the command:
     All 1 test(s) successfully executed.
 
 This will create symlinks and use any provided test data to execute the tool in Galaxy.
-
