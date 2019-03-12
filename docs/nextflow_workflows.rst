@@ -36,7 +36,7 @@ Nextflow will download the workflow automatically before running it. You can of 
 Writing Nextflow workflows
 **************************
 
-You can of course build workflows using any of the script components we have made available (see :ref:`_script_components`), using Nextflow in any manner you choose. However folowing some standards will make your work re-usable.
+You can of course build workflows using any of the script components we have made available (see :ref:`script_components`), using Nextflow in any manner you choose. However folowing some standards will make your work re-usable.
 
 Using basic pipeline-sharing conventions
 ========================================

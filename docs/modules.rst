@@ -2,8 +2,6 @@
 Components
 ############################
 
-.. contents::
-
 We are building components in the following categories:
 
 * Wrappers script packages for common single-cell analysis toolkits
@@ -14,6 +12,8 @@ We are building components in the following categories:
 * Nextflow workflows built on packaged script components
 
 This page details these components.
+
+.. contents::
 
 .. _script_components:
 
