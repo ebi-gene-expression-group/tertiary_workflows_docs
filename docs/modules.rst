@@ -78,14 +78,14 @@ Scanpy
 (currently at v1.3.2)
 
 * Read10x - Read 10x into hdf5 object handled by scanpy
-* Filter cells - FilterCells based on counts and numbers of genes expressed
-* Filter genes - Filter genes based on counts and numbers of cells expressed
+* FilterCells - FilterCells based on counts and numbers of genes expressed
+* FilterGenes - Filter genes based on counts and numbers of cells expressed
 * NormaliseData - Normalise data to make all cells having the same total expression
 * FindVariableGenes - Find variable genes based on normalised dispersion of expression
 * ScaleData - Scale data to make expression variance the same for all genes
-* Run PCA - Run PCA for dimensionality reduction
+* RunPCA - Run PCA for dimensionality reduction
 * ComputeGraph - Compute graph to derive kNN graph
-* FindCluster - Find clusters based on community detection on KNN graph
+* FindClusters - Find clusters based on community detection on KNN graph
 * RunUMAP - Run UMAP to visualise cell clusters using UMAP
 * RunTSNE - Run tSNE to visualise cell clusters using tSNE
 * FindMarkers - FindMarkers to find differentially expressed genes between groups
