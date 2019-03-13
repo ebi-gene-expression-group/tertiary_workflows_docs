@@ -72,8 +72,8 @@ Then load the package 'optparse' (for option parsing) and the common functions p
 
 .. code-block:: r
 
-    suppressPackageStartupMessages(require(optparse))
-    suppressPackageStartupMessages(require(workflowscriptscommon))
+    suppressPackageStartupMessages(library(optparse))
+    suppressPackageStartupMessages(library(workflowscriptscommon))
 
 Note the use of suppressPackageStartupMessages to make sure we don't ouput more junk to stdout than we need to. DO NOT put the command for loading the main R package here (for example Seurat). Loading such packages can take a surprisingly long time, and we need to make sure our command-line arguments are good before committing to it.
 
@@ -131,7 +131,7 @@ The above done, feel free to load the package whose functions you're wrapping, a
 
 .. code-block:: r
 
-    suppressPackageStartupMessages(require(Seurat))
+    suppressPackageStartupMessages(library(Seurat))
 
 Once you have added processing code, pay attention to the output formats you use. R objects should be serialised using saveRDS(), and where feasible additional text-based formats should be used. Even complex R objects will eventually need to be output as formats readable by e.g. Python, but this not essential right now. 
 
