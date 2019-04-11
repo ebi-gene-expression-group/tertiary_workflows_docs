@@ -38,7 +38,7 @@ The above packages have been made available via Bioconda in the packages:
 * `r-workflowscriptscommon <https://anaconda.org/bioconda/r-workflowscriptscommon>`_
 * `bioconductor-singlecellexperiment-scripts <https://anaconda.org/bioconda/bioconductor-singlecellexperiment-scripts>`_
 * `dropletutils-scripts <https://anaconda.org/bioconda/dropletutils-scripts>`_
-* `bioconductor-scater-scripts <https://anaconda.org/bioconda/bioconductor-scater-scripts>`_
+* `scater-scripts <https://anaconda.org/bioconda/scater-scripts>`_
 * `sc3-scripts <https://anaconda.org/bioconda/sc3-scripts>`_
 * `seurat-scripts <https://anaconda.org/bioconda/seurat-scripts>`_
 * `scanpy-scripts <https://anaconda.org/bioconda/scanpy-scripts>`_
@@ -57,7 +57,7 @@ Use of Bioconda packages means we get containers 'for free' as well. See contain
 * `bioconductor-singlecellexperiment-scripts <https://quay.io/repository/biocontainers/bioconductor-singlecellexperiment-scripts>`_
 * `bioconductor-dropletutils <https://quay.io/repository/biocontainers/bioconductor-dropletutils>`_
 * `dropletutils-scripts <https://quay.io/repository/biocontainers/dropletutils-scripts>`_
-* `bioconductor-scater-scripts <https://quay.io/repository/biocontainers/bioconductor-scater-scripts>`_
+* `scater-scripts <https://quay.io/repository/biocontainers/scater-scripts>`_
 * `sc3-scripts <https://quay.io/repository/biocontainers/sc3-scripts>`_
 * `seurat-scripts <https://quay.io/repository/biocontainers/seurat-scripts>`_
 * `scanpy-scripts <https://quay.io/repository/biocontainers/scanpy-scripts>`_
