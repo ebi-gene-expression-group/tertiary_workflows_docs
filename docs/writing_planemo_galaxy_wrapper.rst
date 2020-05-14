@@ -20,7 +20,8 @@ Before installing Planemo, install the latest version of pip 7.0 or greater and 
 
 .. code-block:: bash
 
-    [sudo] pip install virtualenv
+    [sudo] pip3 install --upgrade pip
+    [sudo] pip3 install virtualenv
 
 Refer to user documents for further information https://virtualenv.pypa.io/en/stable/installation/
 
@@ -31,18 +32,60 @@ Setting up virtual environment Installation of Planemo
 
 .. code-block:: bash
 
-    virtualenv .venv
-    . .venv/bin/activate
-    pip install "pip>=7" # Upgrade pip if needed.
-    pip install planemo
+    virtualenv .venv/planemo
+    . .venv/planemo/bin/activate
+    pip3 install "pip>=7" # Upgrade pip if needed.
+    pip3 install planemo
+
+Running Galaxy alternatives
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* planemo direct: this is the simplest initial setup, but longest to complete normally and can have more issues as the galaxy version retrieved by planemo might change, the client will be re-built often (time consuming) or even fail building (blank screen problem).
+* planemo galaxy container: In this setup we instruct planemo to use a pre-built galaxy container. Once the container is initially downloaded, this should be the fastest to run on every subsequent time. Probably the one having less issues with installations when it works. 
+* planemo galaxy clone: Planemo is directed to use a specific Galaxy checked out directory. This is maybe an intermediate betweeen the two solutions above, in the sense that many things are kept constant towards the future, but you need to deal with a first slow start up to build the web client.
+
+The current preferred manner is the planemo galaxy clone, the container based setup seems to have issues on running tools.
+
+Planemo direct
+^^^^^^^^^^^^^^
+
+Within the planemo virtual environment, go to the directory where the tools that you want to try are present (they can be in a hierarchy of directories), and execute:
+
+.. code-block:: bash
+
+    planemo serve
+    
+If the process goes well, after a good while (some 15 minutes easily), you should be able to see Galaxy on your browser on http://localhost:9090/.
+
+
+Planemo galaxy clone
+^^^^^^^^^^^^^^^^^^^^
+
+First you will need a clean clone of the Galaxy repository, ideally from a release branch:
+
+.. code-block:: bash
+    
+    mkdir -p ~/galaxy_instances
+    git clone --single-branch --branch release_20.01 --depth 1 https://github.com/galaxyproject/galaxy ~/galaxy_instances/galaxy-20.01
+    mkdir -p ~/galaxy_instances/data_20.01
+    
+This will leave the Galaxy repo on the folder galaxy-20.01 where you are standing. We will create a data folder for this setup and then run it:
+
+.. code-block:: bash
+
+    planemo serve --file_path ~/galaxy_instances/data_20.01 --galaxy_root ~/galaxy_instances/galaxy-20.01/
+
+This will take some 10 minutes or so the first time, subsequent times will be faster. You should be able to access Galaxy showing your tools on http://localhost:9090/
+
+It would be advisable to leave the last command in an alias in your '~/.profile' or '~/.bashrc' file, to run quickly everytime that you need.
 
 Install problems (probably temporary)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We are currently experiencing blank white screens with Galaxy installs, due to the client parts of Galaxy not being installed correctly. This occurs with the Galaxy installed by Planemo. To address the problem you need to install Galaxy separately and make a couple of tweaks:
+If your planemo setup is allowing you to see Galaxy and the tools that you want to test, then you can skip this part. We are currently experiencing blank white screens with Galaxy installs, due to the client parts of Galaxy not being installed correctly. This occurs with the Galaxy installed by Planemo. To address the problem you need to install Galaxy separately and make a couple of tweaks:
 
 * Download the latest Galaxy in a separate directory and do the the 'run.sh' step.
-* You may see an error like "Cannot uninstall 'certifi'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall." In this case update the certifi entries to certifi==2018.10.15 in lib/galaxy/dependencies/dev-requirements.txt and requirements.txt and try again.
+* You may see an error like "Cannot uninstall 'certifi'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall." In this case update the certifi entries to certifi==2018.10.15 (this might not longer be the correct fixing version though) in lib/galaxy/dependencies/dev-requirements.txt and requirements.txt and try again.
 * You may well see install problems with nodejs. In this case you need to activate the conda environment used by Galaxy and downgrade nodejs to a 9* version (the latest and default version installed is 10*)
 
 Provided the Galaxy install gets most of the way through such that the client is in place, you can then point at this Galaxy install from Planemo with commands like the following (see below):
@@ -62,6 +105,20 @@ For example, installing bioconda scater scripts package can be done like:
 .. code-block:: bash
 
     conda install bioconductor-scater-scripts
+    
+Normally Galaxy will install its own conda packages, so you don't need to worry. However if you are developing a wrapper which doesn't yet have a established conda package (because maybe you are developing it with the wrapper, or maybe you want to test the Galaxy wrapper on a conda package that you are upgrading but not yet pushed to bioconda), you can trick Galaxy into using that conda package. If in the requirements of the wrapper you find something like:
+
+.. code-block:: xml
+
+    <requirement type="package" version="0.0.7">my-package</requirement>
+    
+Then you could create a conda environment with
+
+.. code-block:: bash
+
+    conda create -n __my-package@0.0.7 -c local name-of-locally-built-package
+    
+This again is only needed if you want to trick the Galaxy tool wrapper into using that environment.
 
 Writing wrapper XML
 ====================
@@ -69,6 +126,8 @@ Writing wrapper XML
 For full instructions on this refer to Planemo's documentation itself at https://planemo.readthedocs.io/en/latest/writing_appliance.html. Here we will summarise usage for our use case.
 
 Galaxy wrappers are essentially XML files providing a set of instructions for input and output files and their format, which can then be passed to a command for execution. The Planemo command :code:`tool_init` takes various arguments and generates the skeletal structure of these XML files. Although XML can be written in a text editor Planemo commands makes the process quicker.
+
+More information on galaxy wrapper xml schema can be found at https://docs.galaxyproject.org/en/latest/dev/schema.html and best practices for development can be found at https://galaxy-iuc-standards.readthedocs.io/en/latest/best_practices.html.
 
 For example, we generated a wrapper for `scater-read-10x-results.R <https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts/blob/ed456544658a17fe58d69ad06b9f88e78ba53c40/scater-read-10x-results.R>`_ (this script is now obsolte due to changes in Scater, but the example still serves). This script reads 10X data, creates a SingleCellExperiemnt object from 10X format data, by calling :code:`read10xResults()` from Scater, and saves it in a serialized R object. 
 
@@ -97,6 +156,7 @@ Test data:
         --cite_url 'https://github.com/ebi-gene-expression-group/bioconductor-scater-scripts' \
         --help_from_command 'scater-read-10x-results.R -h'
 
+Please note that this execution of planemo doesn't require the Galaxy installation directory.
 
 The optional flags are discussed in depth in https://planemo.readthedocs.io/en/latest/writing_appliance.html. But the two most basic ones are :code:`--id` and :code:`--name` which indicate the identifier used by galaxy and a short description of the tool, respectively. Executing this Planemo command will generate :code:`scater-read-10x-results.xml`, :code:`macros.xml` and folder :code:`test-data` and copy of tests data within that folder.
 
@@ -201,8 +261,6 @@ Here is scater_macros.xml
         </xml>
     </macros>
 
-
-More information on galaxy wrapper xml schema can be found at https://docs.galaxyproject.org/en/latest/dev/schema.html and best practices for development can be found at https://galaxy-iuc-standards.readthedocs.io/en/latest/best_practices.html.
 
 Linting
 -------
